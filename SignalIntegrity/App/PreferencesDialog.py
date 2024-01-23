@@ -50,11 +50,12 @@ class PreferencesDialog(PropertiesDialog):
         self.parameterizeVisible=CalculationPropertyTrueFalseButton(self.propertyListFrame,'parameterize visible properties only',None,self.onUpdatePreferences,preferences,'Variables.ParameterizeOnlyVisible')
         self.encryptionPassword = CalculationProperty(self.propertyListFrame,'Password for encryption',None,self.onUpdatePassword,preferences,'ProjectFiles.Encryption.Password')
         self.encryptionEnding = CalculationProperty(self.propertyListFrame,'File ending for encryption',None,self.onUpdatePassword,preferences,'ProjectFiles.Encryption.Ending')
-        self.useOnlineHelp=CalculationPropertyTrueFalseButton(self.propertyListFrame,'use online help',None,self.onUpdatePreferences,preferences,'OnlineHelp.UseOnlineHelp')
-        self.plotAllIterations = CalculationPropertyTrueFalseButton(self.propertyListFrame, 'plot all iterations', None, self.onUpdatePreferences,preferences, 'ProjectFiles.PlotAllIterations')
-        self.autoshutoffIterations = CalculationPropertyTrueFalseButton(self.propertyListFrame, 'autoshutoff iterations', None, self.onUpdatePreferences,preferences, 'Calculation.AutoshutoffIterations')
-        self.autoshutoffThreshold = CalculationPropertySI(self.propertyListFrame, 'autoshutoff threshold', None, self.onUpdatePreferences,preferences, 'Calculation.AutoshutoffThreshold')
+        self.useOnlineHelp=CalculationPropertyTrueFalseButton(self.propertyListFrame,'use online help',None,self.onUpdatePreferences,preferences,'OnlineHelp.UseOnlineHelp')        
         self.onlineHelpURL=CalculationProperty(self.propertyListFrame,'online help url',None,self.onUpdatePreferences,preferences,'OnlineHelp.URL')
+        if (self.parent.Drawing.schematic.HasDependentSource()): #Only include these options if have a dependent source
+            self.plotAllIterations = CalculationPropertyTrueFalseButton(self.propertyListFrame, 'plot all iterations', None, self.onUpdatePreferences,preferences, 'ProjectFiles.PlotAllIterations')
+            self.autoshutoffIterations = CalculationPropertyTrueFalseButton(self.propertyListFrame, 'autoshutoff iterations', None, self.onUpdatePreferences,preferences, 'Calculation.AutoshutoffIterations')
+            self.autoshutoffThreshold = CalculationPropertySI(self.propertyListFrame, 'autoshutoff threshold', None, self.onUpdatePreferences,preferences, 'Calculation.AutoshutoffThreshold')
         self.Finish()
 
     def onUpdatePreferences(self):
