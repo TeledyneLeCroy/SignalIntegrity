@@ -51,6 +51,9 @@ class PreferencesDialog(PropertiesDialog):
         self.encryptionPassword = CalculationProperty(self.propertyListFrame,'Password for encryption',None,self.onUpdatePassword,preferences,'ProjectFiles.Encryption.Password')
         self.encryptionEnding = CalculationProperty(self.propertyListFrame,'File ending for encryption',None,self.onUpdatePassword,preferences,'ProjectFiles.Encryption.Ending')
         self.useOnlineHelp=CalculationPropertyTrueFalseButton(self.propertyListFrame,'use online help',None,self.onUpdatePreferences,preferences,'OnlineHelp.UseOnlineHelp')
+        self.plotAllIterations = CalculationPropertyTrueFalseButton(self.propertyListFrame, 'plot all iterations', None, self.onUpdatePreferences,preferences, 'ProjectFiles.PlotAllIterations')
+        self.autoshutoffIterations = CalculationPropertyTrueFalseButton(self.propertyListFrame, 'autoshutoff iterations', None, self.onUpdatePreferences,preferences, 'Calculation.AutoshutoffIterations')
+        self.autoshutoffThreshold = CalculationPropertySI(self.propertyListFrame, 'autoshutoff threshold', None, self.onUpdatePreferences,preferences, 'Calculation.AutoshutoffThreshold')
         self.onlineHelpURL=CalculationProperty(self.propertyListFrame,'online help url',None,self.onUpdatePreferences,preferences,'OnlineHelp.URL')
         self.Finish()
 
